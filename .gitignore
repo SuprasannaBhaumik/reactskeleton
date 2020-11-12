@@ -19,6 +19,7 @@ build
 ### NPM ###
 # modules
 node_modules
+package-lock.json
 
 ### STS ###
 .settings

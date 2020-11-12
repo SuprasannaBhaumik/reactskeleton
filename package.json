@@ -1,8 +1,8 @@
 {
-  "name": "fullthrottlelabs",
+  "name": "reactskeleton",
   "version": "1.0.0",
-  "description": "This multi-step test is designed to test your ability to adapt your code to new requirements. Once you complete a step, a new one will be added, until the test is completed.",
-  "main": "index.js",
+  "description": "React app with tailwind, typescript and webpack.",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
