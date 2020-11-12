@@ -1,0 +1,26 @@
+# JetBrains IDEs:
+.idea
+
+## File-based project format:
+*.iws
+
+# IntelliJ
+/out/
+
+*.iml
+
+### logfiles ###
+*.log
+
+### Webpack ###
+# build output
+build
+
+### NPM ###
+# modules
+node_modules
+
+### STS ###
+.settings
+.project
+.classpath
