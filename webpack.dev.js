@@ -29,6 +29,7 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -36,7 +37,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 },
-                exclude: /node_modules/
+                exclude: /node_modules/,
+
             },
             {
                 test: /\.(ts|tsx)$/,

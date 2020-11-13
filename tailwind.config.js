@@ -1,38 +1,10 @@
 const colors = {
+  white: '#fff',
   black: '#000',
-  black_one: '#2f2f2f',
-  black_two: '#262626',
   blue: '#173573',
-  bright_grey: '#373d4d',
-  bright_grey_one: '#434955',
-  bright_grey_two: '#353d4d',
-  brownish_grey: '#5e5e5e',
-  dark_orange: '#ff9400',
   dark_red: '#ca0000',
-  dark_sky_blue: '#3498db',
   dodger_blue: '#2eabff',
-  greyish: '#b5b5b5',
-  greyish_brown: '#3d3d3d',
-  greyish_two: '#4e4e4e',
-  maroon: '#762029',
-  maroon_one: '#b92626',
-  midnight_blue_one: '#131c34',
-  midnight_blue_two: '#0d1221',
-  midnight_blue_three: '#222d48',
-  midnight_blue_four: '#3d4455',
-  midnight_blue_five: '#263255',
-  midnight_blue_six: '#151d35',
-  midnight_blue_seven: '#2c354e',
-  midnight_blue_eight: '#19223e',
-  midnight_blue_nine: '#131b35',
-  midnight_blue_ten: '#21293d',
-  orange_one: '#ff9300',
-  red: '#f00',
-  topaz: '#1abc9c',
-  warning: '#ff9400',
-  white_one: '#fff',
-  white_two: '#f5f5f5',
-  white_three: '#e5e5e5'
+  greyish: '#999fa1'
 };
 
 module.exports = {
@@ -106,6 +78,7 @@ module.exports = {
       8: '8px',
     },
     borderColors: colors,
+    outlineColor: colors,
     borderRadius: {
       none: '0',
       sm: '.125rem',

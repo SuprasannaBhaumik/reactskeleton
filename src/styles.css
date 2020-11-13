@@ -2,10 +2,15 @@ body {
   font-family: sans-serif;
   padding: 1em;
   background-color: #00070b;
-  color: #fff;
+  color: #999fa1;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+textarea:focus + label {
+  color: #fff;
+  font-weight: bolder;
+  font-size: large;
+}
