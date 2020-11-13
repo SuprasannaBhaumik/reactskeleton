@@ -12,6 +12,7 @@ interface Props {
 
 interface InternalState {
     textAreas: MedicalEvaluation[];
+    showBanner: boolean;
 }
 
 export const mapStateToProps = (state: State) => {
@@ -35,18 +36,27 @@ class App extends React.Component<Props, InternalState> {
                 {key:'technique', value: 'Technique'},
                 {key:'findings', value: 'Findings'},
                 {key:'impressions', value: 'Impressions'}
-            ]
+            ],
+            showBanner: false
         }
         this.submitData = this.submitData.bind(this);
     }
 
-    submitData = () => {
+    submitData() {
         console.log(this.props.formData);
+        this.setState({
+            showBanner: true
+        }, () => {
+            setTimeout(
+                () => this.setState({ showBanner: false }),
+                3000
+            );
+        })
     }
 
     render() {
 
-        const {textAreas} = this.state;
+        const {textAreas, showBanner} = this.state;
 
         return (
             <div className='mt-2 pl-10px'>
@@ -58,6 +68,16 @@ class App extends React.Component<Props, InternalState> {
                     onClick={this.submitData}
                 >Submit
                 </button>
+                <div
+                    className={`p-6 align-center ${showBanner ? 'display': 'hidden'} absolute top-0 bg-dark_red text-white border-none border-white`}
+                    style={{
+                        left: '50%',
+                        transform: 'translateX(-50%)'
+                    }}
+                >
+                    <span>Your report has been successfully submitted</span>
+                </div>
+
             </div>
         )
     }

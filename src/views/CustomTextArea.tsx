@@ -117,19 +117,18 @@ class CustomTextArea extends React.Component<Props, InternalState> {
                         mb-10px`
                     }
             >
-                <div className='mb-10px ml-20px'>
-                    <label htmlFor={this.props.id}>{this.props.labelValue}</label>
-                </div>
-                <div className='h-auto ml-20px'>
+                <div className='h-auto ml-20px relative flex flex-col-reverse'>
                     <textarea
                         ref='myTextArea'
-                        className='h-50px w-full border border-greyish rounded overflow-hidden h-auto focus:outline-none focus:border-dodger_blue'
+                        className='w-full text-white h-50px border border-greyish rounded overflow-hidden focus:outline-none focus:border-dodger_blue'
                         style={{backgroundColor: 'transparent'}}
+                        id={this.props.id}
                         name={this.props.id}
                         value={this.state.value}
                         onChange={this.changeTextInput}
                         rows={this.state.rows}
                     />
+                    <label className='top-0 mb-10px pb-3px' htmlFor={this.props.id}>{this.props.labelValue}</label>
                 </div>
             </div>
         );

@@ -12,5 +12,4 @@ body {
 textarea:focus + label {
   color: #fff;
   font-weight: bolder;
-  font-size: large;
 }
