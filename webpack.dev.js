@@ -1,11 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 
     mode:'development',
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         filename: 'bundle.[name].js',
         path: path.resolve(__dirname, 'build')
@@ -19,12 +20,12 @@ module.exports = {
             filename: 'styles.css',
             chunkFilename: '[id].css'
         }),
-        new HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
         open: true,
         clientLogLevel: 'silent',
-        contentBase: './dist',
+        contentBase: './build',
         historyApiFallback: true,
         hot: true,
     },
@@ -60,9 +61,11 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: (resourcePath, context ) => {
+                                console.log('inside mini css extract plugin')
+                                console.log(resourcePath);
+                                console.log(context);
                                 return path.relative(path.dirname(resourcePath), context) + '/';
-                            },
-                            hmr: true
+                            }
                         }
 
                     },

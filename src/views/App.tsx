@@ -1,13 +1,15 @@
 import React from 'react';
 
-class App extends React.Component {
-    constructor(props) {
+interface Props {}
+
+class App extends React.Component<Props> {
+    constructor(props:Props) {
         super(props);
     }
 
     render() {
         return (
-            <div>Hello World!!!</div>
+            <div className='text-white_one'>Hello World!!!</div>
         )
     }
 }

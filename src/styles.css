@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
   padding: 1em;
   background-color: #00070b;
-  color: #999fa1;
+  color: #fff;
 }
 
 @tailwind base;
