@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {Dispatch} from "redux";
 import {saveData} from "../actions/saveData";
 import {FormData} from "../model/FormData";
+import CircularProgress from "./CircularProgress";
 
 interface Props {
     id: string;
@@ -148,6 +149,7 @@ class CustomTextArea extends React.Component<Props, InternalState> {
                         rows={this.state.rows}
                     />
                     <label className='top-0 mb-10px pb-3px' htmlFor={this.props.id}>{this.props.labelValue}</label>
+                    <CircularProgress isCompleted={processCompleted}/>
                 </div>
             </div>
         );
