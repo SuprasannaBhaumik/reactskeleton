@@ -42,6 +42,23 @@ class CustomTextArea extends React.Component<Props, InternalState> {
             processCompleted: false
         }
         this.changeTextInput = this.changeTextInput.bind(this);
+        this.setBorderColor = this.setBorderColor.bind(this);
+    }
+
+    /**
+     * sets the border color
+     * @param value, if present should be changed
+     */
+    setBorderColor = (value: string) => {
+        if(value !== '') {
+            this.setState({
+               processCompleted: true
+            });
+        } else {
+            this.setState({
+                processCompleted: false
+            })
+        }
     }
 
     /**
@@ -88,6 +105,8 @@ class CustomTextArea extends React.Component<Props, InternalState> {
             event.target.name,
             event.target.value
         );
+
+        this.setBorderColor(event.target.value);
     }
 
     /**
