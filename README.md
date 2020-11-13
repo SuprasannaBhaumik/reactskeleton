@@ -1,7 +1,10 @@
+**Problem Statement**
+
 This multi-step test is designed to test your ability to adapt your code to new requirements.
 Once you complete a step, a new one will be added, until the test is completed.
 
 Keep your code lean, and try to think about solutions that can help you reduce the amount of logic needed to fulfill the requirements.
+
 
 1. Create a list of text-areas, with related labels, one for each of the following sections:
 
@@ -27,3 +30,16 @@ Keep your code lean, and try to think about solutions that can help you reduce t
 
    - The text should read _"Your report has been successfully submitted"_;
    - The notification should fade away after 3 seconds;
+
+
+**Solution**
+
+1. npm install from the root of the application.
+
+2. Please install these modules globally
+
+   - webpack
+   - webpack-cli
+   - webpack-dev-server
+
+
