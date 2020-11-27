@@ -11,8 +11,10 @@ class App extends React.Component<Props> {
 
     render() {
         return (
-            /*<div className='text-white_one'>Hello World!!!</div>*/
-            <div className=' flex flex-row '>
+            <div className=' flex flex-col items-center'>
+                <header className='underline'>
+                    MBRDI - Location Tracker
+                </header>
                 <Information/>
                 <Map/>
             </div>

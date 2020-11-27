@@ -32,12 +32,14 @@ class Information extends React.Component<Props, InternalState> {
     }
 
     submitForm = async () => {
-        console.log('form is submitted');
-        console.log('name:'+this.state.name);
+        this.setState({
+            dataSubmitted: true
+        })
         await navigator.geolocation.getCurrentPosition(
             position => this.setState({
                 latitude: position.coords.latitude,
-                longitude: position.coords.longitude
+                longitude: position.coords.longitude,
+                dataSubmitted: true
             }, () => {
                 console.log(this.state.latitude);
                 console.log(this.state.longitude);
@@ -45,30 +47,29 @@ class Information extends React.Component<Props, InternalState> {
             err => console.log(err),
             { enableHighAccuracy: true }
         );
-
     }
 
     render() {
 
         const {dataSubmitted, name} = this.state;
         return (
-            <div className='flex flex-col text-white_one'>
+            <div className='flex flex-row text-white_one m-10px'>
                 {!dataSubmitted &&
 				<>
 					<div>
-						<span>Please enter your name:</span>
-						<div>
-							<input type='text' onChange = {this.nameChange} value={this.state.name}/>
+						<span className='inline-block'>Please enter your name:</span>
+						<div className='inline-block ml-3'>
+							<input type='text' className='text-black' onChange = {this.nameChange} value={this.state.name}/>
 						</div>
 					</div>
-					<div>
-						<button type='submit' className='' onClick={this.submitForm}>Submit</button>
+					<div className='ml-3'>
+						<a className="button7" style={{backgroundColor: '#2979FF'}} onClick={this.submitForm}>Submit</a>
 					</div>
 				</>
                 }
                 {dataSubmitted &&
                     <div>
-                        {name}!!! thanks for sharing your information.
+						Thanks {name} for sharing your information. Enjoy live tracking your teammates &#128540;
                     </div>
                 }
             </div>

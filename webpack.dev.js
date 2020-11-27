@@ -61,9 +61,6 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: (resourcePath, context ) => {
-                                console.log('inside mini css extract plugin')
-                                console.log(resourcePath);
-                                console.log(context);
                                 return path.relative(path.dirname(resourcePath), context) + '/';
                             }
                         }
