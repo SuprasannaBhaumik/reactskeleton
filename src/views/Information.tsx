@@ -6,8 +6,8 @@ interface Props{}
 interface InternalState {
     name: string;
     dataSubmitted: boolean;
-    latitude: any;
-    longitude: any;
+    latitude: number;
+    longitude: number;
 }
 
 class Information extends React.Component<Props, InternalState> {
@@ -32,20 +32,22 @@ class Information extends React.Component<Props, InternalState> {
     }
 
     submitForm = async () => {
-        this.setState({
-            dataSubmitted: true
-        })
         await navigator.geolocation.getCurrentPosition(
-            position => this.setState({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                dataSubmitted: true
-            }, () => {
-                console.log(this.state.latitude);
-                console.log(this.state.longitude);
-            }),
-            err => console.log(err),
-            { enableHighAccuracy: true }
+            (position) => {
+                let lat = position.coords.latitude
+                let lng = position.coords.longitude
+                console.log("getCurrentPosition Success " + lat + lng) // logs position correctly
+                this.setState({
+                    latitude: lat,
+                    longitude: lng,
+                    dataSubmitted: true
+                })
+            },
+            (error) => {
+                console.log("Error dectecting your location");
+                console.error(JSON.stringify(error))
+            },
+            {enableHighAccuracy: true}
         );
     }
 
@@ -63,7 +65,7 @@ class Information extends React.Component<Props, InternalState> {
 						</div>
 					</div>
 					<div className='ml-3'>
-						<a className="button7" style={{backgroundColor: '#2979FF'}} onClick={this.submitForm}>Submit</a>
+						<a className="button7" style={{backgroundColor: '#2979ff'}} onClick={this.submitForm}>Submit</a>
 					</div>
 				</>
                 }
