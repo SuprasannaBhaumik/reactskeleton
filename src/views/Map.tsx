@@ -2,7 +2,7 @@ import React  from "react";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 // @ts-ignore
 import {MarkerData} from '../model/MarkerData';
-
+import axios from 'axios'
 
 interface InternalState {
     markers: MarkerData[];
@@ -11,18 +11,31 @@ interface Props {}
 
 class Map extends React.Component<Props, InternalState> {
 
+    private interval: NodeJS.Timeout;
+
     constructor(props: Props) {
         super(props);
         this.state = {
-            markers: [
-                {name: 'suprasanna', lat: 22, lng: 52},
-                {name: 'poornima', lat: 52, lng: 22},
-            ]
+            markers: []
         }
     }
 
     componentDidMount() {
-        //get data from url
+        this.interval = setInterval(() => {
+            this.getMapData();
+        }, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    private getMapData() {
+        axios.get('https://location-app-mbrdi.azurewebsites.net/getAllUsers').then((response) => {
+            this.setState( {
+                markers: response.data
+            });
+        });
     }
 
     render() {
@@ -30,7 +43,7 @@ class Map extends React.Component<Props, InternalState> {
         return (
             <MapContainer id='locationTracker'  center={[12.919965, 77.4833]} zoom={2}>
                 <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    attribution='&copy; <a>MBRDI Connectivity Apps Team</a>'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {markers.map( (marker, index) => {
@@ -41,9 +54,7 @@ class Map extends React.Component<Props, InternalState> {
                             </Popup>
                         </Marker>
                     );
-                })
-
-                }
+                })}
             </MapContainer>
         );
     }

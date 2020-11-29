@@ -8,6 +8,7 @@ interface InternalState {
     dataSubmitted: boolean;
     latitude: number;
     longitude: number;
+    shortId: string;
 }
 
 class Information extends React.Component<Props, InternalState> {
@@ -20,6 +21,7 @@ class Information extends React.Component<Props, InternalState> {
             dataSubmitted: false,
             latitude: null,
             longitude: null,
+            shortId: ''
         }
         this.submitForm = this.submitForm.bind(this);
         this.nameChange = this.nameChange.bind(this);
@@ -31,20 +33,36 @@ class Information extends React.Component<Props, InternalState> {
         })
     }
 
+    shortIdChange = (event: any) => {
+        this.setState({
+            shortId: event.target.value
+        })
+    }
+
     submitForm = async () => {
         await navigator.geolocation.getCurrentPosition(
             (position) => {
                 let lat = position.coords.latitude
                 let lng = position.coords.longitude
-                console.log("getCurrentPosition Success " + lat + lng) // logs position correctly
                 this.setState({
                     latitude: lat,
                     longitude: lng,
                     dataSubmitted: true
+                }, () => {
+                    axios.post(
+                        'https://location-app-mbrdi.azurewebsites.net/user',
+                        {
+                            'userName': this.state.name,
+                            'latitude': lat,
+                            'longitude': lng,
+                            'shortId': this.state.shortId
+                        }).then(res => {
+                        console.log(res);
+                    });
                 })
             },
             (error) => {
-                console.log("Error dectecting your location");
+                console.log("Error detecting your location");
                 console.error(JSON.stringify(error))
             },
             {enableHighAccuracy: true}
@@ -58,10 +76,16 @@ class Information extends React.Component<Props, InternalState> {
             <div className='flex flex-row text-white_one m-10px'>
                 {!dataSubmitted &&
 				<>
-					<div>
+					<div className='pt-3'>
 						<span className='inline-block'>Please enter your name:</span>
 						<div className='inline-block ml-3'>
 							<input type='text' className='text-black' onChange = {this.nameChange} value={this.state.name}/>
+						</div>
+					</div>
+					<div className='ml-3 pt-3'>
+						<span className='inline-block'>Please enter your Short Id:</span>
+						<div className='inline-block ml-3'>
+							<input type='text' className='text-black' onChange = {this.shortIdChange} value={this.state.shortId}/>
 						</div>
 					</div>
 					<div className='ml-3'>
