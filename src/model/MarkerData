@@ -1,5 +1,5 @@
 interface MarkerData {
-    name: string;
-    lat: number;
-    lng: number;
+    userName: string;
+    latitude: number;
+    longitude: number;
 }

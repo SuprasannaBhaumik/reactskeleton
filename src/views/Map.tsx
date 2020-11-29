@@ -32,6 +32,7 @@ class Map extends React.Component<Props, InternalState> {
 
     private getMapData() {
         axios.get('https://location-app-mbrdi.azurewebsites.net/getAllUsers').then((response) => {
+            console.log(response);
             this.setState( {
                 markers: response.data
             });
@@ -47,12 +48,12 @@ class Map extends React.Component<Props, InternalState> {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {markers.map( (marker, index) => {
-                    console.log(marker.lat);
-                    console.log(marker.lng);
+                    console.log(marker.latitude);
+                    console.log(marker.longitude);
                     return (
-                        <Marker key={index} position={[+marker.lat, +marker.lng]}>
+                        <Marker key={index} position={[marker.latitude, marker.longitude]}>
                             <Popup>
-                                {marker.name}
+                                {marker.userName}
                             </Popup>
                         </Marker>
                     );
