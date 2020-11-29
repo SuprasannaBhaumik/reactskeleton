@@ -47,8 +47,10 @@ class Map extends React.Component<Props, InternalState> {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {markers.map( (marker, index) => {
+                    console.log(marker.lat);
+                    console.log(marker.lng);
                     return (
-                        <Marker key={index} position={[marker.lat, marker.lng]}>
+                        <Marker key={index} position={[+marker.lat, +marker.lng]}>
                             <Popup>
                                 {marker.name}
                             </Popup>
