@@ -31,7 +31,7 @@ class Map extends React.Component<Props, InternalState> {
     }
 
     private getMapData() {
-        axios.get('https://location-app-mbrdi.azurewebsites.net/getAllUsers').then((response) => {
+        axios.get('https://location-app-mbrdi-tbe.azurewebsites.net/getAllUsers').then((response) => {
 
             const prevLength = this.state.markers.length;
             const currentLength = response.data.length;
