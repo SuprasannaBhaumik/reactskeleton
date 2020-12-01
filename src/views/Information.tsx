@@ -77,10 +77,10 @@ class Information extends React.Component<Props, InternalState> {
                 {!dataSubmitted &&
 				<>
 					<div className='sm:flex-2'>
-                        <input placeholder='Enter name' type='text' className='text-black w-full' onChange = {this.nameChange} value={this.state.name}/>
+                        <input placeholder='ENTER NAME' type='text' className='text-black w-full' onChange = {this.nameChange} value={this.state.name}/>
 					</div>
 					<div className='mt-5px sm:mt-0 sm:ml-5px sm:flex-2'>
-                        <input placeholder='Enter ShortId' type='text' className='text-black w-full' onChange = {this.shortIdChange} value={this.state.shortId}/>
+                        <input placeholder='ENTER SHORTID' type='text' className='text-black w-full' onChange = {this.shortIdChange} value={this.state.shortId}/>
 					</div>
 					<div className='w-full sm:flex-1'>
 						<a className='sm:w-full sm:ml-5px button7' style={{backgroundColor: '#2979ff'}} onClick={this.submitForm}>Submit</a>
