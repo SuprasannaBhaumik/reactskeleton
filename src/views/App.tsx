@@ -11,8 +11,8 @@ class App extends React.Component<Props> {
 
     render() {
         return (
-            <div className=' flex flex-col items-center'>
-                <header className='underline'>
+            <div className='items-center h-full'>
+                <header className='underline text-center'>
                     MBRDI - Location Tracker
                 </header>
                 <Information/>

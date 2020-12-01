@@ -48,21 +48,23 @@ class Map extends React.Component<Props, InternalState> {
     render() {
         const {markers} = this.state;
         return (
-            <MapContainer id='locationTracker'  center={[12.919965, 77.4833]} zoom={2}>
-                <TileLayer
-                    attribution='&copy; <a>MBRDI Connectivity Apps Team</a>'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {markers.map( (marker, index) => {
-                    return (
-                        <Marker key={index} position={[marker.latitude, marker.longitude]}>
-                            <Popup>
-                                {marker.userName}
-                            </Popup>
-                        </Marker>
-                    );
-                })}
-            </MapContainer>
+            <div className='maxSm:h-70vh h-80vh' >
+                <MapContainer id='locationTracker'  center={[21.149850, 79.080598]} zoom={4}>
+                    <TileLayer
+                        attribution='&copy; MBRDI TBE Connectivity Apps Team'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {markers.map( (marker, index) => {
+                        return (
+                            <Marker title={marker.userName} key={index} position={[marker.latitude, marker.longitude]}>
+                                <Popup>
+                                    {marker.userName}
+                                </Popup>
+                            </Marker>
+                        );
+                    })}
+                </MapContainer>
+            </div>
         );
     }
 }

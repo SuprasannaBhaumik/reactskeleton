@@ -73,23 +73,17 @@ class Information extends React.Component<Props, InternalState> {
 
         const {dataSubmitted, name} = this.state;
         return (
-            <div className='flex flex-row text-white_one m-10px'>
+            <div className='flex flex-col sm:flex-row text-white_one m-10px'>
                 {!dataSubmitted &&
 				<>
-					<div className='pt-3'>
-						<span className='inline-block'>Please enter your name:</span>
-						<div className='inline-block ml-3'>
-							<input type='text' className='text-black' onChange = {this.nameChange} value={this.state.name}/>
-						</div>
+					<div className='sm:flex-2'>
+                        <input placeholder='Enter name' type='text' className='text-black w-full' onChange = {this.nameChange} value={this.state.name}/>
 					</div>
-					<div className='ml-3 pt-3'>
-						<span className='inline-block'>Please enter your Short Id:</span>
-						<div className='inline-block ml-3'>
-							<input type='text' className='text-black' onChange = {this.shortIdChange} value={this.state.shortId}/>
-						</div>
+					<div className='mt-5px sm:mt-0 sm:ml-5px sm:flex-2'>
+                        <input placeholder='Enter ShortId' type='text' className='text-black w-full' onChange = {this.shortIdChange} value={this.state.shortId}/>
 					</div>
-					<div className='ml-3'>
-						<a className="button7" style={{backgroundColor: '#2979ff'}} onClick={this.submitForm}>Submit</a>
+					<div className='w-full sm:flex-1'>
+						<a className='sm:w-full sm:ml-5px button7' style={{backgroundColor: '#2979ff'}} onClick={this.submitForm}>Submit</a>
 					</div>
 				</>
                 }
