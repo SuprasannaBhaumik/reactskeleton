@@ -31,7 +31,7 @@ class Map extends React.Component<Props, InternalState> {
     }
 
     private getMapData() {
-        axios.get('https://location-app-mbrdi-tbe.azurewebsites.net/getAllUsers').then((response) => {
+        axios.get('/getAllUsers').then((response) => {
 
             const prevLength = this.state.markers.length;
             const currentLength = response.data.length;
@@ -51,7 +51,7 @@ class Map extends React.Component<Props, InternalState> {
             <div className='maxSm:h-70vh h-80vh' >
                 <MapContainer id='locationTracker'  center={[21.149850, 79.080598]} zoom={4}>
                     <TileLayer
-                        attribution='&copy; MBRDI TBE Connectivity Apps Team'
+                        attribution='&copy; '
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {markers.map( (marker, index) => {
