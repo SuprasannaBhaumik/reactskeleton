@@ -13,7 +13,7 @@ class App extends React.Component<Props> {
         return (
             <div className='items-center h-full'>
                 <header className='underline text-center'>
-                    MBRDI - Location Tracker
+                    Location Tracker
                 </header>
                 <Information/>
                 <Map/>
