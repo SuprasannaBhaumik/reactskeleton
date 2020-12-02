@@ -50,7 +50,7 @@ class Information extends React.Component<Props, InternalState> {
                     dataSubmitted: true
                 }, () => {
                     axios.post(
-                        'https://location-app-mbrdi-tbe.azurewebsites.net/user',
+                        '/user',
                         {
                             'userName': this.state.name,
                             'latitude': lat,
